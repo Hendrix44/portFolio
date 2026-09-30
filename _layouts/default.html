@@ -1,51 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+<html lang="{{ site.lang | default: 'fr' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- assign desc = page.summary | default: site.description | strip_html | strip_newlines -%}
+  {%- assign ptitle = page.title | default: site.name -%}
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ desc | escape }}">
+  <meta name="author" content="{{ site.name }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
 
-    {% include meta.html %}
+  <!-- Aperçu lors d'un partage (LinkedIn, messageries) -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ ptitle | escape }}">
+  <meta property="og:description" content="{{ desc | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="theme-color" content="#0E1726">
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1726'/%3E%3Ctext x='4' y='22' font-family='monospace' font-weight='700' font-size='17' fill='%23F0B44C'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ '/feed.xml' | relative_url }}">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
-
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
-
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
-      </div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-prompt">~/</span>emmanuel-kadiebwe</a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="{{ '/' | relative_url }}#projets">projets</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>à-propos</a>
+        <a href="{{ site.cv | relative_url }}">cv.pdf</a>
+      </nav>
     </div>
+  </header>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+  <main id="contenu" class="wrap">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© {{ site.time | date: '%Y' }} {{ site.name }}</p>
+      <ul class="footer-links">
+        <li><a href="mailto:{{ site.email }}">email</a></li>
+        <li><a href="https://www.linkedin.com/in/{{ site.linkedin }}" rel="me">linkedin</a></li>
+        <li><a href="https://github.com/{{ site.github }}" rel="me">github</a></li>
+      </ul>
     </div>
-
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
-  </body>
+  </footer>
+</body>
 </html>

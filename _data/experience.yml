@@ -1,0 +1,8 @@
+- role: Stagiaire technicien systèmes et réseaux
+  org: Airtel Télécommunication, République démocratique du Congo
+  when: 3 mois
+  tasks:
+    - Administration de serveurs Windows Server et Linux, gestion d'Active Directory, des GPO et du DHCP, virtualisation des environnements
+    - Support utilisateurs N1/N2 — diagnostic et résolution d'incidents, gestion de parc, accompagnement des utilisateurs
+    - Sécurité des SI — contrôle des accès, durcissement des systèmes, audit de configuration et sauvegardes
+    - Supervision avec Zabbix, automatisation de tâches en Python et Bash, rédaction de procédures techniques

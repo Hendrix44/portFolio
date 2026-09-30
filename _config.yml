@@ -1,20 +1,26 @@
+# Identité du site
 name: Emmanuel Kadiebwe
-description: Étudiant Master Ingénieur Administration Systèmes, Réseaux & Cybersécurité — en recherche de stage (support IT, admin sys/réseau, cybersécurité)
-avatar: /images/avatar.jpg
- 
-footer-links:
-  email: emmanuel@kadiebwe.eu
-  github: Hendrix44
-  linkedin: emmanuel-kadiebwe
- 
+title: Emmanuel Kadiebwe
+description: Étudiant en Master Ingénieur Administration Systèmes, Réseaux et Cybersécurité, à la recherche d'un stage en support IT, administration systèmes et réseaux ou cybersécurité.
+lang: fr
+
+# Contact (utilisés dans le menu, le pied de page et l'accueil)
+email: emmanuel@kadiebwe.eu
+github: Hendrix44
+linkedin: emmanuel-kadiebwe
+cv: /assets/CV_Emmanuel_Kadiebwe.pdf
+
 url: https://hendrix44.github.io
 baseurl: ""
- 
+
 permalink: /:title/
- 
 markdown: kramdown
-exclude: ["README.md", "LICENSE"]
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
 plugins:
   - jekyll-sitemap
   - jekyll-feed
- 
+
+exclude: ["README.md", "LICENSE", "Gemfile", "Gemfile.lock", "vendor"]

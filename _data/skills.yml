@@ -1,0 +1,18 @@
+- domain: Systèmes Windows
+  items: [Windows Server, Active Directory, GPO, droits NTFS, MDT, Microsoft 365, Windows 10/11]
+- domain: Systèmes Linux
+  items: [Debian, Ubuntu, administration de services, terminal avancé, durcissement]
+- domain: Réseau
+  items: [TCP/IP, VLAN, DNS, DHCP, routage, firewalls, VPN, switches Cisco, diagnostic]
+- domain: Virtualisation
+  items: [VMware ESXi, Hyper-V, Proxmox, Docker, VirtualBox]
+- domain: Sécurité des SI
+  items: [audit, contrôle des accès, MFA, Nmap, Snort, Metasploit, Burp Suite, OWASP ZAP, EBIOS RM]
+- domain: Supervision
+  items: [Zabbix, Splunk, Centreon, analyse de logs, alertes]
+- domain: Support et ticketing
+  items: [support N1/N2, GLPI, ServiceNow, gestion des incidents, gestion de parc]
+- domain: Sauvegarde et cloud
+  items: [Veeam, tests de restauration, notions AWS et Azure, Azure AD]
+- domain: Scripting
+  items: [Python, Bash, PowerShell]

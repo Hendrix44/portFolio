@@ -1,18 +1,84 @@
 ---
 layout: default
 ---
-
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
+<section class="hero" aria-labelledby="hero-name">
+  <div class="term">
+    <div class="term-bar" aria-hidden="true">emmanuel@portfolio: ~</div>
+    <div class="term-body">
+      <p class="seq s1"><span class="ps">emmanuel@portfolio:~$</span> whoami</p>
+      <div class="out seq s2">
+        <h1 id="hero-name" class="whoami">{{ site.name }}</h1>
+        <p>Étudiant en Master 1 Ingénieur Administration Systèmes, Réseaux et Cybersécurité<br><span class="muted">Nexa Digital School</span></p>
       </div>
+      <p class="seq s3"><span class="ps">emmanuel@portfolio:~$</span> cat recherche.txt</p>
+      <div class="out seq s4">
+        <p>Stage de 40 jours minimum en support IT, administration systèmes et réseaux ou cybersécurité.</p>
+        <p>Disponible immédiatement. Mobile dans toute la France, permis B.</p>
+      </div>
+      <p class="seq s5"><span class="ps">emmanuel@portfolio:~$</span> <span class="cursor" aria-hidden="true"></span></p>
+    </div>
+  </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="{{ site.cv | relative_url }}">Télécharger mon CV</a>
+    <a class="btn" href="mailto:{{ site.email }}">{{ site.email }}</a>
+    <a class="btn" href="#projets">Voir mes projets</a>
+  </div>
+</section>
+
+<section class="section" id="projets" aria-labelledby="t-projets">
+  <h2 class="section-title" id="t-projets">Projets</h2>
+  <ul class="projects">
+    {% for post in site.posts %}
+    <li class="project">
+      {% if post.context %}<p class="project-context">{{ post.context }}</p>{% endif %}
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.summary | default: post.excerpt | strip_html }}</p>
+      {% if post.stack %}
+      <ul class="tags" aria-label="Technologies">
+        {% for t in post.stack %}<li>{{ t }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="section" id="experience" aria-labelledby="t-xp">
+  <h2 class="section-title" id="t-xp">Expérience</h2>
+  <ol class="xp">
+    {% for x in site.data.experience %}
+    <li class="xp-item">
+      <p class="xp-when">{{ x.when }}</p>
+      <div>
+        <h3 class="xp-role">{{ x.role }}</h3>
+        <p class="xp-org">{{ x.org }}</p>
+        <ul>
+          {% for t in x.tasks %}<li>{{ t }}</li>{% endfor %}
+        </ul>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="section" id="competences" aria-labelledby="t-skills">
+  <h2 class="section-title" id="t-skills">Compétences</h2>
+  <dl class="skills">
+    {% for s in site.data.skills %}
+    <div>
+      <dt>{{ s.domain }}</dt>
+      <dd>{{ s.items | join: ", " }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</section>
+
+<section class="section" id="certifications" aria-labelledby="t-certs">
+  <h2 class="section-title" id="t-certs">Certifications</h2>
+  <ul class="certs">
+    <li><strong>CCNA : Introduction to Networks</strong><span>Cisco Networking Academy</span></li>
+    <li><strong>SecNumacadémie</strong><span>ANSSI</span></li>
+    <li><strong>L'atelier RGPD</strong><span>CNIL</span></li>
+  </ul>
+</section>

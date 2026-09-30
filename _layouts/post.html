@@ -1,17 +1,26 @@
 ---
 layout: default
 ---
-
 <article class="post">
-  <h1>{{ page.title }}</h1>
+  <a class="back" href="{{ '/' | relative_url }}#projets">cd ../projets</a>
 
-  <div class="entry">
+  <header class="post-head">
+    {% if page.context %}<p class="post-context">{{ page.context }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
+    {% if page.stack %}
+    <ul class="tags" aria-label="Technologies utilisées">
+      {% for t in page.stack %}<li>{{ t }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </header>
+
+  <div class="prose">
     {{ content }}
   </div>
 
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
-
-  {% include disqus.html %}
+  <footer class="post-foot">
+    <a href="{{ '/' | relative_url }}#projets">Voir les autres projets</a>
+    <a href="mailto:{{ site.email }}">Me contacter</a>
+  </footer>
 </article>
