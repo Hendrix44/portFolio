@@ -11,7 +11,7 @@ linkedin: emmanuel-kadiebwe
 cv: /assets/CV_Emmanuel_Kadiebwe.pdf
 
 url: https://hendrix44.github.io
-baseurl: ""
+baseurl: "/portFolio"
 
 permalink: /:title/
 markdown: kramdown
